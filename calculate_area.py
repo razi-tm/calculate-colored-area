@@ -25,8 +25,9 @@ def calculate_area(image_path):
         total_area = 0
         
         for contour in contours:
-            x, y, w, h = cv2.boundingRect(contour)
-            area = w * h
+            # x, y, w, h = cv2.boundingRect(contour)
+            (x, y), (w, h), angle = cv2.minAreaRect(contour)
+            area = int(w * h)
             
             if w == h:  # Square
                 total_area += area
